@@ -3,12 +3,11 @@ from webpreview import OpenGraph
 import requests, os
 
 
-LINK_PREVIEW_ACCESS_KEY = "5dc93469844a9ca355f31b8e517abc70bf477ca77f4ce"
-LINK_PREVIEW_URL = "http://api.linkpreview.net/"
+# LINK_PREVIEW_ACCESS_KEY = "5dc93469844a9ca355f31b8e517abc70bf477ca77f4ce"
+# LINK_PREVIEW_URL = "http://api.linkpreview.net/"
 
-
-# LINK_PREVIEW_ACCESS_KEY = os.environ["LINK_PREVIEW_ACCESS_KEY"]
-# LINK_PREVIEW_URL = os.environ["LINK_PREVIEW_URL"]
+LINK_PREVIEW_ACCESS_KEY = os.environ["LINK_PREVIEW_ACCESS_KEY"]
+LINK_PREVIEW_URL = os.environ["LINK_PREVIEW_URL"]
 
 class LinkParser():
 
@@ -70,7 +69,6 @@ def parse_link_information(url):
     link_parser = LinkParser(url)
     og_response = link_parser.parse_using_og()
 
-    print(og_response)
     # If Open Graph response is None for Title or description, Try using the web html parser ,
     # If HTML Web parser also fails, Then try using Preview Link    
     if 'title' in og_response and og_response['title'] == None:
